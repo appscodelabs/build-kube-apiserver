@@ -3,7 +3,7 @@ set -x
 
 dir=`pwd`
 
-pushd ~/go/src/k8s.io/kuberbetes
+pushd ~/go/src/k8s.io/kubernetes
 git_tag=$(git describe --exact-match --abbrev=0 2>/dev/null || echo '')
 make kube-apiserver
 cp _output/bin/kube-apiserver $dir/kube-apiserver
