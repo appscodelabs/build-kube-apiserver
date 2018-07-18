@@ -13,6 +13,8 @@ popd
 chmod +x kube-apiserver
 docker build -t $DOCKER_REGISTRY/kube-apiserver-amd64:$git_tag .
 docker push $DOCKER_REGISTRY/kube-apiserver-amd64:$git_tag
+
 # load image directly into minikube
-docker save $DOCKER_REGISTRY/kube-apiserver-amd64:v1.11.0 | (eval "$(minikube docker-env)" && docker load)
+docker save $DOCKER_REGISTRY/kube-apiserver-amd64:$git_tag | (eval "$(minikube docker-env)" && docker load)
+
 rm -rf kube-apiserver
